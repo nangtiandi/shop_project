@@ -15,6 +15,9 @@
             <x-side-bar-link name="test" link="{{ route('test') }}" count="5"></x-side-bar-link>
         </li>
         <li>
+            <x-side-bar-link name="Brand Manage" link="{{ route('brand.index') }}" count="5"></x-side-bar-link>
+        </li>
+        <li>
             <x-side-bar-spacer></x-side-bar-spacer>
         </li>
         <li>

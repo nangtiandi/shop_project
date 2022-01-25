@@ -13,7 +13,7 @@ class StoreBrandRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,15 @@ class StoreBrandRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required|max:255',
+            'logo' => 'required|mimes:jpg,png,jpeg',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'title.required' => 'You need to fill blank!',
+            'logo.required' => 'You should fill blank!',
         ];
     }
 }
