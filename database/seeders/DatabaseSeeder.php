@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Item;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,5 +18,7 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         Brand::factory(10)->create();
+        Category::factory(10)->create();
+        Item::factory(10)->create();
     }
 }
