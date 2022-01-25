@@ -30,6 +30,8 @@ Route::middleware("auth")->group(function(){
     Route::post("test",[TestController::class,'test'])->name('test');
     Route::resource('category',\App\Http\Controllers\CategoryController::class);
 
+    Route::resource('brand',\App\Http\Controllers\BrandController::class);
+
     Route::prefix("profile")->name("profile.")->group(function(){
         Route::view("/","profile.index")->name('index');
         Route::get('/change-photo',[ProfileController::class,'updatePhotoView'])->name('update-photo');
