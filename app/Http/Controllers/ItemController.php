@@ -95,6 +95,10 @@ class ItemController extends Controller
         $item->category_id = $request->category_id;
         $item->brand_id = $request->brand_id;
 //        $item->feature_image = $request->feature_image;
+        $f_photo = $request->file('feature_image');
+        $newName =  uniqid()."_photo.".$f_photo->extension();
+        $f_photo->storeAs('public/photo',$newName);
+        $item->feature_image = $newName;
         $item->update();
         return redirect()->route('item.index')->with('status','Success');
     }
