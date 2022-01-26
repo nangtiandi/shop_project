@@ -30,7 +30,6 @@
                 <form action="{{ route('category.destroy',$category->id) }}" class="d-none" id="del{{ $category->id }}" method="post">
                     @csrf
                     @method('delete')
-
                 </form>
 
 
