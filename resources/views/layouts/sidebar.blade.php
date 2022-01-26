@@ -17,7 +17,11 @@
         <li>
             <x-side-bar-link name="Manage Category" link="{{ route('category.create') }}" class="fas fa-th-list"></x-side-bar-link>
         </li>
+        <li>
             <x-side-bar-link name="Brand Manage" link="{{ route('brand.index') }}" count="5"></x-side-bar-link>
+        </li>
+        <li>
+            <x-side-bar-link name="Item Manage" link="{{ route('item.create') }}" class="fas fa-briefcase"></x-side-bar-link>
         </li>
         <li>
             <x-side-bar-spacer></x-side-bar-spacer>
