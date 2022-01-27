@@ -11,6 +11,7 @@
 <body>
 
 @include('navbar')
+
 <div class="container my-5 py-3">
     <div class="row">
         @foreach(\App\Models\Item::all() as $item)
@@ -34,9 +35,11 @@
                             @endguest
                             @auth()
                                 <div class="d-flex justify-content-end">
-                                    <form>
+                                    <form action="{{route('cart.store')}}" method="post">
+                                        @csrf
                                         <div class="d-flex gap-2 justify-content-end">
-                                            <input type="number" class="form-control w-25" min="0">
+                                            <input type="hidden" name="item_id" value="{{$item->id}}">
+                                            <input type="number" name="quantity" class="form-control w-25" min="0">
                                             <button class="btn btn-primary">
                                                 <i class="fas fa-shopping-cart"></i>
                                             </button>
