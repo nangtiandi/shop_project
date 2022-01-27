@@ -68,11 +68,6 @@
                                         <li class="nav-item">
                                             <a class="nav-link active" aria-current="page" href="#">Home</a>
                                         </li>
-                                        @isAdmin
-                                        <li class="nav-item">
-                                            <a class="nav-link active" aria-current="page" href="{{ route('item.index') }}">Item Manage</a>
-                                        </li>
-                                        @endisAdmin
                                         <li class="nav-item">
                                             <a class="nav-link" href="#">Link</a>
                                         </li>
@@ -95,11 +90,16 @@
                                                         {{ Auth::user()->name }}
                                                     </button>
                                                     <ul class="dropdown-menu" aria-labelledby="headerDropDown">
+                                                        @isAdmin
+                                                        <li class="nav-item">
+                                                            <a class="nav-link active" aria-current="page" href="{{ route('item.index') }}">Item Manage</a>
+                                                        </li>
+                                                        @endisAdmin
                                                         <li><a class="dropdown-item" href="{{ route('profile.change-password') }}">Password Change</a></li>
                                                         <li><a class="dropdown-item" href="{{ route('profile.update-photo') }}">Update Photo</a></li>
                                                         <li class="dropdown-divider">
-
                                                         </li>
+
                                                         <li>
                                                             <a class="dropdown-item" href="#" onclick="document.getElementById('logoutForm').submit()">
                                                                 Logout
