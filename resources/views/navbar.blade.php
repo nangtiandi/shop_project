@@ -25,9 +25,12 @@
                                             <i class="fas fa-search"></i>
                                         </button>
                                         <a href="" class="btn btn-outline-primary">
+                                            <div class="d-flex align-items-center gap-1">
                                             <i class="fas fa-shopping-cart"></i>
+                                            </div>
                                         </a>
                                     </form>
+
                                     <div class="">
                                         @guest
                                             <a class="btn btn-light" href="{{route('login')}}">
