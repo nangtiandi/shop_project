@@ -25,9 +25,16 @@
                                             <i class="fas fa-search"></i>
                                         </button>
                                         <a href="" class="btn btn-outline-primary">
-                                            <i class="fas fa-shopping-cart"></i>
+                                            <div class="d-flex align-items-center gap-1">
+                                            <i class="fas fa-shopping-cart">
+                                            </i>
+                                                @auth
+                                                {{auth()->user()->carts->count()}}
+                                                @endauth
+                                            </div>
                                         </a>
                                     </form>
+
                                     <div class="">
                                         @guest
                                             <a class="btn btn-light" href="{{route('login')}}">
