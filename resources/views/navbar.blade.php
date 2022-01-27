@@ -28,7 +28,9 @@
                                             <div class="d-flex align-items-center gap-1">
                                             <i class="fas fa-shopping-cart">
                                             </i>
+                                                @auth
                                                 {{auth()->user()->carts->count()}}
+                                                @endauth
                                             </div>
                                         </a>
                                     </form>
