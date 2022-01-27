@@ -24,13 +24,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::middleware("auth")->group(function(){
     Route::view("test","test")->name('test');
     Route::post("test",[TestController::class,'test'])->name('test');
-    Route::resource('category',\App\Http\Controllers\CategoryController::class);
-    Route::resource('brand',\App\Http\Controllers\BrandController::class);
-    Route::resource('item',\App\Http\Controllers\ItemController::class);
+    Route::middleware('isAdmin')->group(function (){
+        Route::resource('category',\App\Http\Controllers\CategoryController::class);
+        Route::resource('brand',\App\Http\Controllers\BrandController::class);
+        Route::resource('item',\App\Http\Controllers\ItemController::class);
+    });
 
     Route::prefix("profile")->name("profile.")->group(function(){
         Route::view("/","profile.index")->name('index');

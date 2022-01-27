@@ -39,7 +39,7 @@ class BrandController extends Controller
     public function store(StoreBrandRequest $request)
     {
         $brand = new Brand();
-        $brand->title = $request->title;
+        $brand->title = ucfirst($request->title);
         $brand->slug = Str::slug($request->title);
         ##photo upload
         $newLogo = uniqid()."_logo.".$request->file('logo')->extension();
@@ -80,7 +80,7 @@ class BrandController extends Controller
      */
     public function update(UpdateBrandRequest $request, Brand $brand)
     {
-        $brand->title = $request->title;
+        $brand->title = ucfirst($request->title);
         $brand->slug = Str::slug($request->title);
         ##photo upload
         $newLogo = uniqid()."_logo.".$request->file('logo')->extension();
