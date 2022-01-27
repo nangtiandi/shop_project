@@ -10,9 +10,7 @@
 </head>
 <body>
 
-<<<<<<< HEAD
 @include('navbar')
-=======
 <div class="container-fluid">
     <div class="row">
         <div class="container">
