@@ -10,9 +10,9 @@
 </head>
 <body>
 
-<<<<<<< HEAD
+
 @include('navbar')
-=======
+
 <div class="container-fluid">
     <div class="row">
         <div class="container">
@@ -81,7 +81,7 @@
             </div>
     </div>
 </div>
->>>>>>> 229de1030a981e045bb25c82d7924a84d6d27adf
+
 <div class="container my-5 py-3">
     <div class="row">
         @foreach(\App\Models\Item::all() as $item)
