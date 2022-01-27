@@ -35,7 +35,7 @@
                                 <input type="number" class="form-control w-25" min="0">
 
                                 <a href="{{ route('index') }}" class="btn btn-primary">
-                                    <i class="fas fa-shopping-cart"></i>
+                                    <i class="fas fa-shopping-cart"></i>g
                                 </a>
                             </div>
 
