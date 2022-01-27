@@ -26,7 +26,9 @@
                                         </button>
                                         <a href="" class="btn btn-outline-primary">
                                             <div class="d-flex align-items-center gap-1">
-                                            <i class="fas fa-shopping-cart"></i>
+                                            <i class="fas fa-shopping-cart">
+                                            </i>
+                                                {{auth()->user()->carts->count()}}
                                             </div>
                                         </a>
                                     </form>
