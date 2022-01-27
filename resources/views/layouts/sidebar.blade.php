@@ -24,6 +24,9 @@
             <x-side-bar-link name="Item Manage" link="{{ route('item.create') }}" class="fas fa-briefcase"></x-side-bar-link>
         </li>
         <li>
+            <x-side-bar-link name="Preview Item" link="{{ route('index') }}" class="fas fa-clipboard-list"></x-side-bar-link>
+        </li>
+        <li>
             <x-side-bar-spacer></x-side-bar-spacer>
         </li>
         <li>
