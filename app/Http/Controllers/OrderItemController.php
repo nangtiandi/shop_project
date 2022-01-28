@@ -36,7 +36,17 @@ class OrderItemController extends Controller
      */
     public function store(StoreorderItemRequest $request)
     {
+        DB::transaction(function () {
+            DB::beginTransaction();
+            try{
 
+                DB:commit();
+            }catch (\Exception $e){
+                DB::rollBack();
+                throw $e;
+                }
+        });
+        return $request;
     }
 
     /**
