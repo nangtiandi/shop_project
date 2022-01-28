@@ -5,9 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use App\Http\Requests\StoreItemRequest;
 use App\Http\Requests\UpdateItemRequest;
+use App\Models\Photo;
+use Illuminate\Support\Str;
 
 class ItemController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth','isAdmin'])->except('show');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +22,8 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        $items = Item::all();
+        return view('item.index',compact('items'));
     }
 
     /**
@@ -25,7 +33,7 @@ class ItemController extends Controller
      */
     public function create()
     {
-        //
+        return view('item.create');
     }
 
     /**
@@ -36,7 +44,21 @@ class ItemController extends Controller
      */
     public function store(StoreItemRequest $request)
     {
-        //
+        $item = new Item();
+        $item->model = ucfirst($request->model);
+        $item->description = $request->description;
+        $item->excerpt = Str::words($request->description,20);
+        $item->price = $request->price;
+        $item->category_id = $request->category_id;
+        $item->brand_id = $request->brand_id;
+
+//        feature image save
+        $f_photo = $request->file('feature_image');
+        $newName =  uniqid()."_photo.".$f_photo->extension();
+        $f_photo->storeAs('public/photo',$newName);
+        $item->feature_image = $newName;
+        $item->save();
+        return redirect()->route('item.create')->with('status','Success');
     }
 
     /**
@@ -47,7 +69,7 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
-        //
+        return view('item-detail',compact('item'));
     }
 
     /**
@@ -58,7 +80,7 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        //
+        return view('item.edit',compact('item'));
     }
 
     /**
@@ -70,7 +92,20 @@ class ItemController extends Controller
      */
     public function update(UpdateItemRequest $request, Item $item)
     {
-        //
+//        return $request;
+        $item->model = ucfirst($request->model);
+        $item->description = $request->description;
+        $item->excerpt = Str::words($request->description,20);
+        $item->price = $request->price;
+        $item->category_id = $request->category_id;
+        $item->brand_id = $request->brand_id;
+//        $item->feature_image = $request->feature_image;
+        $f_photo = $request->file('feature_image');
+        $newName =  uniqid()."_photo.".$f_photo->extension();
+        $f_photo->storeAs('public/photo',$newName);
+        $item->feature_image = $newName;
+        $item->update();
+        return redirect()->route('item.index')->with('status','Success');
     }
 
     /**
@@ -81,6 +116,7 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
-        //
+        $item->delete();
+        return redirect()->back()->with('status','Success');
     }
 }

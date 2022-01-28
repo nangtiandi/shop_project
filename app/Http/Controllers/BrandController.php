@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Http\Requests\StoreBrandRequest;
 use App\Http\Requests\UpdateBrandRequest;
+use Illuminate\Support\Str;
 
 class BrandController extends Controller
 {
@@ -15,7 +16,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        //
+        $brands = Brand::latest('id')->paginate(10);
+        return view('brand.index',compact('brands'));
     }
 
     /**
@@ -25,7 +27,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('brand.create');
     }
 
     /**
@@ -36,7 +38,15 @@ class BrandController extends Controller
      */
     public function store(StoreBrandRequest $request)
     {
-        //
+        $brand = new Brand();
+        $brand->title = ucfirst($request->title);
+        $brand->slug = Str::slug($request->title);
+        ##photo upload
+        $newLogo = uniqid()."_logo.".$request->file('logo')->extension();
+        $request->file('logo')->storeAs('public/images/logos',$newLogo);
+        $brand->logo = $newLogo;
+        $brand->save();
+        return redirect()->route('brand.index');
     }
 
     /**
@@ -58,7 +68,7 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        //
+        return view('brand.edit',compact('brand'));
     }
 
     /**
@@ -70,7 +80,14 @@ class BrandController extends Controller
      */
     public function update(UpdateBrandRequest $request, Brand $brand)
     {
-        //
+        $brand->title = ucfirst($request->title);
+        $brand->slug = Str::slug($request->title);
+        ##photo upload
+        $newLogo = uniqid()."_logo.".$request->file('logo')->extension();
+        $request->file('logo')->storeAs('public/images/logos',$newLogo);
+        $brand->logo = $newLogo;
+        $brand->update();
+        return redirect()->route('brand.index');
     }
 
     /**
@@ -81,6 +98,7 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        //
+        $brand->delete();
+        return redirect()->back();
     }
 }

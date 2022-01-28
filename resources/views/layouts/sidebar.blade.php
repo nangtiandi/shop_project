@@ -15,6 +15,18 @@
             <x-side-bar-link name="test" link="{{ route('test') }}" count="5"></x-side-bar-link>
         </li>
         <li>
+            <x-side-bar-link name="Manage Category" link="{{ route('category.create') }}" class="fas fa-th-list"></x-side-bar-link>
+        </li>
+        <li>
+            <x-side-bar-link name="Brand Manage" link="{{ route('brand.index') }}" count="5"></x-side-bar-link>
+        </li>
+        <li>
+            <x-side-bar-link name="Item Manage" link="{{ route('item.create') }}" class="fas fa-briefcase"></x-side-bar-link>
+        </li>
+        <li>
+            <x-side-bar-link name="Preview Item" link="{{ route('index') }}" class="fas fa-clipboard-list"></x-side-bar-link>
+        </li>
+        <li>
             <x-side-bar-spacer></x-side-bar-spacer>
         </li>
         <li>

@@ -3,9 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
-class BrandFactory extends Factory
+class CartFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,13 +13,8 @@ class BrandFactory extends Factory
      */
     public function definition()
     {
-        $name = $this->faker->word();
-        $slug = Str::slug($name);
-
         return [
-            'title' => $name,
-            'slug' => $slug,
-            'logo' => 'default.png'
+            //
         ];
     }
 }
