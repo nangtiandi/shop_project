@@ -25,6 +25,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::middleware("auth")->group(function(){
+    Route::resource('cart',\App\Http\Controllers\CartController::class);
     Route::view("test","test")->name('test');
     Route::post("test",[TestController::class,'test'])->name('test');
     Route::middleware('isAdmin')->group(function (){
@@ -32,7 +33,6 @@ Route::middleware("auth")->group(function(){
         Route::resource('brand',\App\Http\Controllers\BrandController::class);
         Route::resource('item',\App\Http\Controllers\ItemController::class);
     });
-    Route::resource('cart',\App\Http\Controllers\CartController::class);
 
 
     Route::prefix("profile")->name("profile.")->group(function(){
