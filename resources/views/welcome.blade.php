@@ -1,6 +1,9 @@
 @extends('layouts.master')
 @section('content')
     <div class="row">
+        @if(session('success'))
+            <div class="alert alert-success">{{session('success')}}</div>
+        @endif
         @foreach(\App\Models\Item::all() as $item)
             <div class="col-md-4 col-xs-12 my-4 ">
                 <div class="card shadow rounded" >
