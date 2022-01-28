@@ -28,12 +28,15 @@ Route::middleware("auth")->group(function(){
     Route::resource('cart',\App\Http\Controllers\CartController::class);
     Route::view("test","test")->name('test');
     Route::post("test",[TestController::class,'test'])->name('test');
+    Route::resource('order-item',\App\Http\Controllers\OrderItemController::class);
     Route::middleware('isAdmin')->group(function (){
         Route::resource('category',\App\Http\Controllers\CategoryController::class);
         Route::resource('brand',\App\Http\Controllers\BrandController::class);
     });
     Route::resource('item',\App\Http\Controllers\ItemController::class);
+
     Route::resource('order',\App\Http\Controllers\OrderController::class);
+
     Route::prefix("profile")->name("profile.")->group(function(){
         Route::view("/","profile.index")->name('index');
         Route::get('/change-photo',[ProfileController::class,'updatePhotoView'])->name('update-photo');
