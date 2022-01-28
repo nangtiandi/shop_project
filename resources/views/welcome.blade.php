@@ -31,7 +31,6 @@
                                         <i class="fas fa-info-circle"></i>
                                     </a>
                                 </div>
-
                             @endguest
                             @auth()
                                 <div class="d-flex justify-content-end">
@@ -39,7 +38,7 @@
                                         @csrf
                                         <div class="d-flex gap-2 justify-content-end">
                                             <input type="hidden" name="item_id" value="{{$item->id}}">
-                                            <input type="number" name="quantity" class="form-control w-25" min="0">
+                                            <input type="number" name="quantity" class="form-control w-25" min="1" value="{{ $item->cartsByUser->first()->quantity ?? 0 }}" required>
                                             <button class="btn btn-primary">
                                                 <i class="fas fa-shopping-cart"></i>
                                             </button>

@@ -24,10 +24,9 @@
                                         <button class="btn btn-outline-primary" type="submit">
                                             <i class="fas fa-search"></i>
                                         </button>
-                                        <a href="" class="btn btn-outline-primary">
+                                        <a href="{{ route('cart.index') }}" class="btn btn-outline-primary">
                                             <div class="d-flex align-items-center gap-1">
-                                            <i class="fas fa-shopping-cart">
-                                            </i>
+                                            <i class="fas fa-shopping-cart"></i>
                                                 @auth
                                                 {{auth()->user()->carts->count()}}
                                                 @endauth

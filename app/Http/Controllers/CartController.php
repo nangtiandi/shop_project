@@ -17,7 +17,8 @@ class CartController extends Controller
      */
     public function index()
     {
-        return view('cart.index');
+        $carts = Auth::user()->carts;
+        return view('cart.index',compact('carts'));
     }
 
     /**
@@ -38,12 +39,22 @@ class CartController extends Controller
      */
     public function store(StoreCartRequest $request)
     {
+
+        $currentItemsInCart = auth()->user()->carts->pluck('item_id')->toArray();
+        if(in_array($request->item_id,$currentItemsInCart)){
+            $currentItem = Cart::where("item_id",$request->item_id)->where("user_id",Auth::id())->first();
+            $currentItem->quantity =  $request->quantity;
+
+
+            $currentItem->update();
+            return redirect()->back();
+        }
+
         $cart = new Cart();
         $cart->quantity = $request->quantity;
         $cart->item_id = $request->item_id;
         $cart->user_id = Auth::id();
         $cart->save();
-
         return redirect()->back();
     }
 
@@ -88,6 +99,12 @@ class CartController extends Controller
      */
     public function destroy(Cart $cart)
     {
-        //
+        $num = \auth()->user()->carts->count();
+        $cart->delete();
+        if ($num > 1){
+            return redirect()->back();
+        }elseif ($num ==1){
+            return redirect()->route('index');
+        }
     }
 }
