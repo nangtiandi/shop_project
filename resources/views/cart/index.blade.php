@@ -1,25 +1,14 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
-</head>
-<body>
-    @include('navbar')
-<div class="container">
+@extends('layouts.master')
+@section('content')
     <div class="row">
-        <div class="col-4 pt-5 mt-4">
+        <div class="col-4 pt-3 mt-3">
             <a href="{{ route('index') }}" class="btn btn-primary">
                 <i class="fas fa-arrow-left"></i>
             </a>
         </div>
     </div>
-    <div class="row ">
-        <div class="col-6 mt-1">
+    <div class="row justify-content-center">
+        <div class="col-5 mt-1">
             <div class="">
                 @php
                     $total = 0;
@@ -28,9 +17,9 @@
                 @endphp
                 @forelse($carts as $cart)
                     @php
-                    $total += $cart->item->price * $cart->quantity;
-                    $quantity += $cart->quantity;
-                    array_push($item,$cart->item->model);
+                        $total += $cart->item->price * $cart->quantity;
+                        $quantity += $cart->quantity;
+                        array_push($item,$cart->item->model);
                     @endphp
                     <div class="card my-5">
                         <div class="card-body">
@@ -75,7 +64,7 @@
                 @endforelse
             </div>
         </div>
-        <div class="col-6 mt-1">
+        <div class="col-5 mt-1">
             <div class="my-5">
                 <div class="card">
                     <div class="card-header">
@@ -95,7 +84,4 @@
             </div>
         </div>
     </div>
-</div>
-
-</body>
-</html>
+@endsection
