@@ -33,7 +33,7 @@ Route::middleware("auth")->group(function(){
         Route::resource('brand',\App\Http\Controllers\BrandController::class);
     });
     Route::resource('item',\App\Http\Controllers\ItemController::class);
-
+    Route::resource('order',\App\Http\Controllers\OrderController::class);
     Route::prefix("profile")->name("profile.")->group(function(){
         Route::view("/","profile.index")->name('index');
         Route::get('/change-photo',[ProfileController::class,'updatePhotoView'])->name('update-photo');

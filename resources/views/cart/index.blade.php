@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-5 mt-1">
+        <div class="col-md-5 col-sm-12 mt-1">
             <div class="">
                 @php
                     $total = 0;
@@ -33,7 +33,7 @@
                             <span class="small text-muted">${{ $cart->item->price }} x {{ $cart->quantity }}</span>
 
                             <div class="mb-3">
-                                <img src="{{ asset('storage/photo/'.$cart->item->feature_image) }}" width="300px" alt="">
+                                <img src="{{ asset('storage/photo/'.$cart->item->feature_image) }}" alt="" style="max-width: 120px;height: 120px;object-fit: cover">
 
                             </div>
 
@@ -64,7 +64,7 @@
                 @endforelse
             </div>
         </div>
-        <div class="col-5 mt-1">
+        <div class="col-md-5 col-sm-12 mt-1">
             <div class="my-5">
                 <div class="card">
                     <div class="card-header">
@@ -79,6 +79,7 @@
                             @endforeach
                         </ul>
                         <h5>Quantity :{{ $quantity }} </h5>
+                        <a href="{{route('order.create')}}" class="btn btn-secondary">Payment Order</a>
                     </div>
                 </div>
             </div>

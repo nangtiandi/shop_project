@@ -17,8 +17,9 @@ class CartController extends Controller
      */
     public function index()
     {
+        $cart = Cart::all();
         $carts = Auth::user()->carts;
-        return view('cart.index',compact('carts'));
+        return view('cart.index',compact('carts','cart'));
     }
 
     /**
