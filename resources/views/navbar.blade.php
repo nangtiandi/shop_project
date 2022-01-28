@@ -3,9 +3,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top mx-5">
                         <div class="container-fluid">
-                            <a class="navbar-brand" href="#">Shop Name</a>
+                            <a class="navbar-brand" href="{{url('/')}}">Shop Name</a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
@@ -52,6 +52,11 @@
                                                     <li class="dropdown-divider">
 
                                                     </li>
+                                                    @isAdmin
+                                                    <li>
+                                                        <a href="{{route('home')}}" class="dropdown-item">Dashboard</a>
+                                                    </li>
+                                                    @endisAdmin
                                                     <li>
                                                         <a class="dropdown-item" href="#" onclick="document.getElementById('logoutForm').submit()">
                                                             Logout

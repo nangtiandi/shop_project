@@ -31,9 +31,8 @@ Route::middleware("auth")->group(function(){
     Route::middleware('isAdmin')->group(function (){
         Route::resource('category',\App\Http\Controllers\CategoryController::class);
         Route::resource('brand',\App\Http\Controllers\BrandController::class);
-        Route::resource('item',\App\Http\Controllers\ItemController::class);
     });
-
+    Route::resource('item',\App\Http\Controllers\ItemController::class);
 
     Route::prefix("profile")->name("profile.")->group(function(){
         Route::view("/","profile.index")->name('index');
