@@ -10,6 +10,9 @@ class Item extends Model
 {
     use HasFactory;
     protected $with = ['brand','category'] ;
+//    public function orderItems(){
+//        return $this->hasMany(orderItem::class);
+//    }
     public function brand(){
         return $this->belongsTo(Brand::class);
     }

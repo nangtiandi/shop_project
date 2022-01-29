@@ -43,7 +43,7 @@
                                 </select>
                             </div>
                         </div>
-                        <button class="btn btn-secondary">Submit Order</button>
+                        <button class="btn btn-primary">Submit Order</button>
                     </form>
                 </div>
             </div>

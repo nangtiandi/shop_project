@@ -15,6 +15,7 @@
                             <th>State</th>
                             <th>Zip Code</th>
                             <th>Payment</th>
+                            <th>Control</th>
                             <th>Create At</th>
                         </tr>
                         </thead>
@@ -30,6 +31,9 @@
                                 <td>{{$order->zip_code}}</td>
                                 <td>{{$order->payment}}</td>
                                 <td>
+                                    <a href="{{ route('order.show',$order->id) }}" class="btn btn-primary">Show</a>
+                                </td>
+                                <td>
                                     <p class="mb-0 small">
                                         <i class="fas fa-calendar fa-fw"></i> {{ $order->created_at->format('d / m / Y') }}
                                     </p>
@@ -40,6 +44,7 @@
                                 </td>
                             </tr>
                         @endforeach
+
                         </tbody>
                     </table>
                 </div>

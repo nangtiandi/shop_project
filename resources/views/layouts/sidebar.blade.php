@@ -26,9 +26,7 @@
         <li>
             <x-side-bar-link name="Preview Item" link="{{ route('index') }}" class="fas fa-clipboard-list"></x-side-bar-link>
         </li>
-        <li>
-            <x-side-bar-link name="Order Item" link="{{ route('order-item.index') }}" class="fas fa-box-open"></x-side-bar-link>
-        </li>
+
          <li>
            <x-side-bar-link name="Order Form" link="{{ route('order.index') }}" class="fas fa-clipboard-list"></x-side-bar-link>
 

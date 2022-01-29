@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreorderItemRequest;
 use App\Http\Requests\UpdateorderItemRequest;
+use App\Models\Item;
+use App\Models\Order;
 use App\Models\orderItem;
+use Illuminate\Support\Facades\Auth;
 
 class OrderItemController extends Controller
 {
@@ -13,9 +16,9 @@ class OrderItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        return view('orderItem.index');
+
     }
 
     /**
@@ -36,17 +39,7 @@ class OrderItemController extends Controller
      */
     public function store(StoreorderItemRequest $request)
     {
-        DB::transaction(function () {
-            DB::beginTransaction();
-            try{
 
-                DB:commit();
-            }catch (\Exception $e){
-                DB::rollBack();
-                throw $e;
-                }
-        });
-        return $request;
     }
 
     /**
@@ -56,8 +49,9 @@ class OrderItemController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(orderItem $orderItem)
+
     {
-        //
+
     }
 
     /**
