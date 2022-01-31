@@ -23,6 +23,7 @@ class CreateOrdersTable extends Migration
             $table->string('state');
             $table->integer('zip_code')->nullable();
             $table->string('payment');
+            $table->enum('status',['pending','confirm','delivering','delivered'])->default('pending');
             $table->timestamps();
         });
     }

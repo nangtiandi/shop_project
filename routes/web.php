@@ -33,9 +33,11 @@ Route::middleware("auth")->group(function(){
         Route::resource('category',\App\Http\Controllers\CategoryController::class);
         Route::resource('brand',\App\Http\Controllers\BrandController::class);
     });
+    Route::resource('orderCancel',\App\Http\Controllers\OrderCancelController::class);
     Route::resource('item',\App\Http\Controllers\ItemController::class);
 
     Route::resource('order',\App\Http\Controllers\OrderController::class);
+    Route::post('order-confirm',[\App\Http\Controllers\OrderController::class,'orderConfirm'])->name('order.confirm');
 
     Route::prefix("profile")->name("profile.")->group(function(){
         Route::view("/","profile.index")->name('index');

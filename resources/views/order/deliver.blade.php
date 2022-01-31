@@ -4,7 +4,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <table class="table table-hover table-responsive">
+                    <table class="table table-hover">
                         <thead>
                         <tr>
                             <th>ID</th>
@@ -15,9 +15,9 @@
                             <th>State</th>
                             <th>Zip Code</th>
                             <th>Payment</th>
-                            <th>Status</th>
                             <th>Control</th>
                             <th>Create At</th>
+                            <th>Status</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -32,26 +32,12 @@
                                 <td>{{$order->zip_code}}</td>
                                 <td>{{$order->payment}}</td>
                                 <td>
-                                    <p class="badge bg-info">{{$order->status}}</p>
+                                    <p class="badge bg-info">Delivering</p>
                                 </td>
                                 <td>
                                     <div class="btn-group">
                                         <a href="{{ route('order.show',$order->id) }}" class="btn btn-primary">Show</a>
-                                            <form action="{{route('order.confirm')}}" method="post">
-                                                @csrf
-                                                <input type="hidden" value="{{$order->id}}" name="order_id">
-                                                @if($order->status === "pending")
-                                                    <button class="btn btn-info">Confirm</button>
-                                                @elseif($order->status === "confirm")
-                                                    <button class="btn btn-info">Delivering</button>
-                                                @elseif($order->status === "delivering")
-                                                    <button class="btn btn-info">Delivered</button>
-                                                @elseif($order->status === "delivered")
-                                                    <button class="btn btn-info">Done</button>
-                                                @endif
-
-                                            </form>
-                                        <a href="" class="btn btn-danger">Delete</a>
+                                        <a href="" class="btn btn-info">Done</a>
                                     </div>
                                 </td>
                                 <td>

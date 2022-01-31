@@ -26,9 +26,12 @@
         <li>
             <x-side-bar-link name="Preview Item" link="{{ route('index') }}" class="fas fa-clipboard-list"></x-side-bar-link>
         </li>
+        <li>
+            <x-side-bar-link name="Order Cancel" link="{{ route('orderCancel.index') }}" class="fas fa-clipboard-list"></x-side-bar-link>
 
+        </li>
          <li>
-           <x-side-bar-link name="Order Form" link="{{ route('order.index') }}" class="fas fa-clipboard-list"></x-side-bar-link>
+           <x-side-bar-link name="Order View" link="{{ route('order.index') }}" class="fas fa-clipboard-list"></x-side-bar-link>
 
         </li>
         <li>

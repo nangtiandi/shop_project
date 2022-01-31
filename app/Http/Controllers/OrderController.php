@@ -41,9 +41,32 @@ class OrderController extends Controller
 
         return redirect()->route('order.show',$order->id)->with('success','We will confirm your payment! Please wait a moment.');
     }
+    public function orderConfirm(Request $request){
+        $currentOrder = Order::findOrFail($request->order_id);
+        if ($currentOrder->status === 'pending'){
+            $currentOrder->status = 'confirm';
+            $currentOrder->update();
+            return back();
+        }else if($currentOrder->status === 'confirm'){
+            $currentOrder->status = 'delivering';
+            $currentOrder->update();
+            return back();
+        }else if($currentOrder->status === 'delivering'){
+            $currentOrder->status = 'delivered';
+            $currentOrder->update();
+            return back();
+        }else if($currentOrder->status === 'delivered'){
+            return back();
+        }
+    }
     public function show($id){
         $order = Order::find($id);
+
 //        return $order;
         return view('order.show',compact('order'));
     }
+    public function orderDeliver(){
+        return view('order.deliver');
+    }
+
 }
