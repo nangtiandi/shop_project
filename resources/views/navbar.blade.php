@@ -15,25 +15,24 @@
                                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Link</a>
+                                        <a class="nav-link" href="#">About</a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Services</a>
+                                    </li><li class="nav-item">
+                                        <a class="nav-link" href="#">Contact</a>
+                                    </li>
+
                                 </ul>
                                 <div class="d-flex">
-                                    <form class="d-flex mx-3 gap-2">
-                                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                        <button class="btn btn-outline-primary" type="submit">
-                                            <i class="fas fa-search"></i>
-                                        </button>
-                                        <a href="{{ route('cart.index') }}" class="btn btn-outline-primary">
-                                            <div class="d-flex align-items-center gap-1">
+                                    <a href="{{ route('cart.index') }}" class="btn btn-outline-primary">
+                                        <div class="d-flex align-items-center gap-1">
                                             <i class="fas fa-shopping-cart"></i>
-                                                @auth
+                                            @auth
                                                 {{auth()->user()->carts->count()}}
-                                                @endauth
-                                            </div>
-                                        </a>
-                                    </form>
-
+                                            @endauth
+                                        </div>
+                                    </a>
                                     <div class="">
                                         @guest
                                             <a class="btn btn-light" href="{{route('login')}}">

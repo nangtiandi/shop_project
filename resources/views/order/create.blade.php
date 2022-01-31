@@ -1,8 +1,11 @@
 @extends('layouts.master')
 @section('content')
-    <div class="row">
-        <div class="col-md-6">
+    <div class="row my-3 justify-content-center">
+        <div class="col-md-6 ">
             <div class="card">
+                <div class="card-header">
+                    Payment Method
+                </div>
                 <div class="card-body">
                     <form action="{{route('order.store')}}" method="post">
                         @csrf
