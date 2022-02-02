@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -9,10 +8,8 @@
                       Manage Category
                     </div>
                     <div class="card-body">
-
                         <form action="{{ route('category.store') }}" class="mb-3" method="post">
                             @csrf
-
                             <div class="row">
                                 <div class="col-6">
                                     <div class="mb-3">
@@ -31,26 +28,12 @@
                                         <button class="btn btn-primary">Add Category</button>
                                     </div>
                                 </div>
-
                             </div>
-
-
-
                         </form>
-
-                        @if(session('status'))
-
-                            <p class="alert alert-success">{{ session('status') }}</p>
-
-                        @endif
-
                         @include('category.list')
-
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 @endsection

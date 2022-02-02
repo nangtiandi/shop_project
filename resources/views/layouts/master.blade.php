@@ -16,6 +16,11 @@
     @yield('content')
 </div>
 
+<footer>
+    <div class="text-center">
+        <p class="mt-5">Development By <a href="">Laravel Developer</a>Read More<a href=""> privacy & terms. </a></p>
+    </div>
+</footer>
 <script src="{{asset('js/app.js')}}"></script>
 <script>
 

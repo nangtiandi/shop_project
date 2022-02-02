@@ -12,17 +12,13 @@
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                     <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                        <a class="nav-link {{Request::segment(1) == 'about' ? 'active' : ''}}" href="{{route('about')}}">About</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">About</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Services</a>
+                                        <a class="nav-link {{Request::segment(1) == 'services' ? 'active' : ''}}" href="{{route('services')}}">Services</a>
                                     </li><li class="nav-item">
-                                        <a class="nav-link" href="#">Contact</a>
+                                        <a class="nav-link {{Request::segment(1) == 'contact' ? 'active' : ''}}" href="{{route('contact')}}">Contact</a>
                                     </li>
-
                                 </ul>
                                 <div class="d-flex">
                                     <a href="{{ route('cart.index') }}" class="btn btn-outline-primary">

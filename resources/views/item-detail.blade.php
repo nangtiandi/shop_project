@@ -2,7 +2,7 @@
 @section('content')
     <div class="vh-100 d-flex justify-content-center align-items-center">
         <div class="container d-flex justify-content-center">
-            <div class="card p-2" style="width: 400px;height: 400px;border: none;position: relative;overflow: hidden">
+            <div class="card-box p-2" style="width: 400px;height: 400px;border: none;position: relative;overflow: hidden">
                 <div class="p-info px-3 py-3">
                     <div>
                         <h5 class="mb-0">{{ $item->model }}</h5> <span>{{ $item->brand->title }}</span>

@@ -12,10 +12,9 @@
                 </div>
                 <div class="col-md-4">
                     <select name="category_id" id="" class="form-select">
-                        <option value="">Phone</option>
-                        <option value="">Computer</option>
-                        <option value="">Watch</option>
-                        <option value="">Sports</option>
+                        @foreach(\App\Models\Category::latest('id')->get() as $category)
+                            <option value="{{$category->id}}">{{$category->title}}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -23,7 +22,7 @@
             <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
                 @foreach(\App\Models\Item::all() as $item)
                 <div class="col">
-                    <div class="card h-100 shadow-sm"> <img src="{{asset('storage/photo/'.$item->feature_image)}}" class="card-img-top" alt="{{$item->model}}">
+                    <div class="card-box h-100 shadow-sm"> <img src="{{asset('storage/photo/'.$item->feature_image)}}" class="card-img-top" alt="{{$item->model}}">
                         <div class="card-body">
                             <div class="clearfix mb-3"> <span class="float-start badge rounded-pill bg-primary">{{ $item->category->title }}</span> <span class="float-end price-hp">$ {{$item->price}}</span> </div>
                             <h5 class="card-title">{{$item->model}}</h5>

@@ -1,5 +1,5 @@
-<table class="table table-hover align-middle">
-    <thead>
+<table id="example" class="table table-striped" style="width:100%">
+<thead>
     <tr>
         <th>#</th>
         <th>Title</th>
@@ -9,16 +9,13 @@
     </tr>
     </thead>
     <tbody>
-
     @forelse($categories as $category)
         <tr>
             <td>{{ $category->id }}</td>
             <td>{{ $category->title }}</td>
             <td>  <i class="fas fa-{{$category->icon}} fa-fw"></i> </td>
             <td>
-
                 <div class="btn btn-group">
-
                     <a href="{{ route('category.edit',$category->id) }}" class="btn btn-sm btn-outline-primary">
                         <i class="fas fa-pencil-alt fa-fw"></i>
                     </a>
@@ -26,16 +23,10 @@
                         <i class="fas fa-trash-alt fa-fw"></i>
                     </button>
                 </div>
-
                 <form action="{{ route('category.destroy',$category->id) }}" class="d-none" id="del{{ $category->id }}" method="post">
                     @csrf
                     @method('delete')
                 </form>
-
-
-
-
-
             </td>
             <td>
                 <p class="mb-0 small">
@@ -45,18 +36,23 @@
                     <i class="fas fa-clock fa-fw"></i>
                     {{ $category->created_at->format("h:i a") }}
                 </p>
-
-
             </td>
         </tr>
-
     @empty
         <tr>
             <td colspan="5">There is no Category</td>
         </tr>
     @endforelse
-
     </tbody>
+    <tfoot>
+    <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Icon</th>
+        <th>Control</th>
+        <th>Created_At</th>
+    </tr>
+    </tfoot>
 </table>
-{{ $categories->links() }}
+{{--{{ $categories->links() }}--}}
 

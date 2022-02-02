@@ -80,7 +80,7 @@ h2 {
     max-width: 1200px
 }
 
-.card {
+.card-box {
     background: #fff;
     box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
     transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
@@ -114,7 +114,7 @@ h2 {
     transition: all 0.5s
 }
 
-.card:hover .heart i {
+.card-box:hover .heart i {
     animation: heart 300ms ease-in forwards;
     animation-delay: 500ms
 }
@@ -128,7 +128,7 @@ h2 {
     opacity: 0
 }
 
-.card:hover .p-about {
+.card-box:hover .p-about {
     animation: content 300ms ease-in forwards
 }
 
@@ -153,11 +153,11 @@ h2 {
     }
 }
 
-.card:hover .p-image img {
+.card-box:hover .p-image img {
     animation: onimage 300ms ease-in forwards
 }
 
-.card:hover .p-price {
+.card-box:hover .p-price {
     animation: onprice 500ms ease-in forwards
 }
 
@@ -201,7 +201,7 @@ h2 {
     position: absolute;
     bottom: -180px
 }
-.card:hover .buttons {
+.card-box:hover .buttons {
     animation: buttons 500ms ease-in forwards
 }
 
@@ -221,7 +221,7 @@ h2 {
     border-top-right-radius: calc(1rem - 1px)
 }
 
-.card h5 {
+.card-box h5 {
     overflow: hidden;
     height: 30px;
     font-weight: 900;
@@ -235,11 +235,11 @@ h2 {
     padding: 15px
 }
 
-.card h2 {
+.card-box h2 {
     font-size: 1rem
 }
 
-.card:hover {
+.card-box:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06)
 }
@@ -416,6 +416,7 @@ h2 {
 footer {
     background: #212529;
     height: 80px;
+    line-height: 80px;
     color: #fff
 }
 //********** cart store list
@@ -505,4 +506,10 @@ form {
     background-repeat: no-repeat;
     background-position-x: 95%;
     background-position-y: center
+}
+.active{
+    color: white !important;
+    background-color: dodgerblue;
+    border-radius: 4px;
+    padding: 4px;
 }

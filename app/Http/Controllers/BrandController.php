@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Http\Requests\StoreBrandRequest;
 use App\Http\Requests\UpdateBrandRequest;
+use App\Models\Info;
 use Illuminate\Support\Str;
 
 class BrandController extends Controller
@@ -16,7 +17,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brands = Brand::latest('id')->paginate(10);
+        $brands = Brand::all();
         return view('brand.index',compact('brands'));
     }
 
@@ -46,7 +47,7 @@ class BrandController extends Controller
         $request->file('logo')->storeAs('public/images/logos',$newLogo);
         $brand->logo = $newLogo;
         $brand->save();
-        return redirect()->route('brand.index');
+        return redirect()->route('brand.index')->with('toast',Info::showToast('success','Successfully Created Brand'));
     }
 
     /**
@@ -87,7 +88,7 @@ class BrandController extends Controller
         $request->file('logo')->storeAs('public/images/logos',$newLogo);
         $brand->logo = $newLogo;
         $brand->update();
-        return redirect()->route('brand.index');
+        return redirect()->route('brand.index')->with('toast',Info::showToast('success','Successfully Updated Brand'));
     }
 
     /**
@@ -99,6 +100,6 @@ class BrandController extends Controller
     public function destroy(Brand $brand)
     {
         $brand->delete();
-        return redirect()->back();
+        return redirect()->back()->with('toast',Info::showToast('success','Successfully Deleted Brand'));
     }
 }

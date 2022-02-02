@@ -10,26 +10,21 @@
             </li>
         </ul>
         <div class="row">
-            @if(session('status'))
-
-                <p class="alert alert-success">{{ session('status') }}</p>
-
-            @endif
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Model</th>
-                    <th>Category</th>
-                    <th>Brand</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Feature_Image</th>
-                    <th>Controls</th>
-                    <th>Created_At</th>
-                </tr>
-                </thead>
-                <tbody>
-                @forelse($items as $item)
+                <table id="example" class="table table-striped" style="width:100%">
+                    <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Category</th>
+                        <th>Brand</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Feature_Image</th>
+                        <th>Controls</th>
+                        <th>Created_At</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @forelse($items as $item)
                     <tr>
                         <td>{{$item->model}}</td>
                         <td>{{$item->category->title}}</td>
@@ -69,10 +64,20 @@
                             <td colspan="5">There is no Category</td>
                         </tr>
                     @endforelse
-
-                </tbody>
-            </table>
-
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th>Model</th>
+                        <th>Category</th>
+                        <th>Brand</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Feature_Image</th>
+                        <th>Controls</th>
+                        <th>Created_At</th>
+                    </tr>
+                    </tfoot>
+                </table>
         </div>
     </div>
 @endsection

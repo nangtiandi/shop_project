@@ -27,7 +27,7 @@ class UpdateItemRequest extends FormRequest
             'model' => 'required|max:255',
             'feature_image' => 'required|mimes:jpg,png,jpeg',
             'description' => 'required',
-            'price' => 'required',
+            'price' => 'required|numeric',
             'brand_id' => 'required',
             'category_id' => 'required'
         ];

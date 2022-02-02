@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Info;
 use App\Models\Item;
 use App\Http\Requests\StoreItemRequest;
 use App\Http\Requests\UpdateItemRequest;
@@ -58,7 +59,7 @@ class ItemController extends Controller
         $f_photo->storeAs('public/photo',$newName);
         $item->feature_image = $newName;
         $item->save();
-        return redirect()->route('item.create')->with('status','Success');
+        return redirect()->route('item.create')->with('toast',Info::showToast('success','Successfully Created Item'));
     }
 
     /**
@@ -95,7 +96,7 @@ class ItemController extends Controller
 //        return $request;
         $item->model = ucfirst($request->model);
         $item->description = $request->description;
-        $item->excerpt = Str::words($request->description,20);
+        $item->excerpt = Str::words($request->description,10);
         $item->price = $request->price;
         $item->category_id = $request->category_id;
         $item->brand_id = $request->brand_id;
@@ -105,7 +106,7 @@ class ItemController extends Controller
         $f_photo->storeAs('public/photo',$newName);
         $item->feature_image = $newName;
         $item->update();
-        return redirect()->route('item.index')->with('status','Success');
+        return redirect()->route('item.index')->with('toast',Info::showToast('success','Successfully Updated Item'));
     }
 
     /**
@@ -117,6 +118,6 @@ class ItemController extends Controller
     public function destroy(Item $item)
     {
         $item->delete();
-        return redirect()->back()->with('status','Success');
+        return redirect()->back()->with('toast',Info::showToast('success','Successfully Deleted Item'));
     }
 }

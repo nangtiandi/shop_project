@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use App\Models\Info;
 use Illuminate\Support\Str;
 
 class CategoryController extends Controller
@@ -26,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::latest('id')->paginate(5);
+        $categories = Category::all();
         return view('category.create',compact('categories'));
     }
 
@@ -48,7 +49,7 @@ class CategoryController extends Controller
         $category->slug = Str::slug($title);
         $category->icon = $request->icon;
         $category->save();
-        return redirect()->route('category.create')->with('status','Success');
+        return redirect()->route('category.create')->with('status','Success')->with('toast',Info::showToast('success','Successfully Created Category'));
     }
 
     /**
@@ -89,7 +90,7 @@ class CategoryController extends Controller
         $category->icon = $request->icon;
         $category->update();
 
-        return redirect()->route('category.create')->with("status","aung p aung p aung p");
+        return redirect()->route('category.create')->with('toast',Info::showToast('success','Successfully Updated Category'));
     }
 
     /**
@@ -101,6 +102,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->back()->with("status","aung p aung p aung p");
+        return redirect()->back()->with('toast',Info::showToast('success','Successfully Deleted Category'));
     }
 }

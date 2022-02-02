@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreOrderRequest;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\orderItem;
@@ -16,7 +17,7 @@ class OrderController extends Controller
     public function create(){
         return view('order.create');
     }
-    public function store(Request $request){
+    public function store(StoreOrderRequest $request){
         $order = new Order();
         $order->receiver_name = $request->receiver_name;
         $order->user_id = Auth::id();

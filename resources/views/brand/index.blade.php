@@ -10,8 +10,8 @@
             </li>
         </ul>
         <div class="row">
-            <table class="table">
-                <thead>
+            <table id="example" class="table table-striped" style="width:100%">
+            <thead>
                     <tr>
                         <th>Brand Name</th>
                         <th>Brand Logo</th>
@@ -53,9 +53,17 @@
                     @endforeach
                 </tbody>
             </table>
-            <div class="d-flex justify-content-end">
-                {{$brands->links()}}
-            </div>
+            <tfoot>
+            <tr>
+                <th>Brand Name</th>
+                <th>Brand Logo</th>
+                <th>Brand Create_Time</th>
+                <th>Action Buttons</th>
+            </tr>
+            </tfoot>
+{{--            <div class="d-flex justify-content-end">--}}
+{{--                {{$brands->links()}}--}}
+{{--            </div>--}}
         </div>
     </div>
 @endsection

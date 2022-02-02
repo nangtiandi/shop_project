@@ -17,7 +17,7 @@ class ItemFactory extends Factory
     public function definition()
     {
         $description = $this->faker->realText(1000);
-        $excerpt = Str::words($description,20);
+        $excerpt = Str::words($description,10);
 
         return [
             'model' => $this->faker->word(),

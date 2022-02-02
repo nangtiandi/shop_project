@@ -13,8 +13,8 @@
                     {{ Auth::user()->name }}
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="headerDropDown">
-                    <li><a class="dropdown-item" href="{{ route('profile.change-password') }}">Password Change</a></li>
-                    <li><a class="dropdown-item" href="{{ route('profile.update-photo') }}">Update Photo</a></li>
+                    <li><a class="dropdown-item" href="{{ route('profile.index') }}">Profile</a></li>
+                    <li><a class="dropdown-item" href="{{ route('profile.change-password') }}">Change Password</a></li>
                     <li class="dropdown-divider">
 
                     </li>
