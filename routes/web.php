@@ -16,9 +16,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestController;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('index');
+//Route::get('/', function () {
+//    return view('welcome');
+//})->name('index');
+Route::get('/',[\App\Http\Controllers\HomeController::class,'welcome'])->name('index');
 Route::get('/about',function (){
     return view('about');
 })->name('about');
@@ -28,6 +29,16 @@ Route::get('/services',function (){
 Route::get('/contact',function (){
    return view('contact');
 })->name('contact');
+## ================ footer links
+Route::get('/privacy',function (){
+    return view('privacy');
+})->name('privacy');
+Route::get('/terms',function (){
+    return view('terms');
+})->name('terms');
+Route::get('/buyer',function (){
+    return view('buyer');
+})->name('buyer');
 
 Auth::routes();
 

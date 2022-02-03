@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -27,5 +28,9 @@ class HomeController extends Controller
             return redirect()->route('index');
         }
         return view('home');
+    }
+    public function welcome(){
+        $items = Item::latest('id')->paginate(12);
+        return view('welcome',compact('items'));
     }
 }

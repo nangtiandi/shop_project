@@ -12,6 +12,9 @@
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                     <li class="nav-item">
+                                        <a class="nav-link {{Request::segment(1) == '' ? 'active' : ''}}" href="{{route('index')}}">Home</a>
+                                    </li>
+                                    <li class="nav-item">
                                         <a class="nav-link {{Request::segment(1) == 'about' ? 'active' : ''}}" href="{{route('about')}}">About</a>
                                     </li>
                                     <li class="nav-item">
@@ -42,11 +45,9 @@
                                                     {{ Auth::user()->name }}
                                                 </button>
                                                 <ul class="dropdown-menu" aria-labelledby="headerDropDown">
-                                                    <li><a class="dropdown-item" href="{{ route('profile.change-password') }}">Password Change</a></li>
-                                                    <li><a class="dropdown-item" href="{{ route('profile.update-photo') }}">Update Photo</a></li>
-                                                    <li class="dropdown-divider">
-
-                                                    </li>
+{{--                                                    <li><a class="dropdown-item" href="{{ route('profile.change-password') }}">Password Change</a></li>--}}
+{{--                                                    <li><a class="dropdown-item" href="{{ route('profile.update-photo') }}">Update Photo</a></li>--}}
+{{--                                                    <li class="dropdown-divider"></li>--}}
                                                     @isAdmin
                                                     <li>
                                                         <a href="{{route('home')}}" class="dropdown-item">Dashboard</a>
